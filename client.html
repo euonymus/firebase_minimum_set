@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js canvas - geometry - cube</title>
+		<meta charset="utf-8">
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    databaseURL: "https://mptemplate1-92c0b.firebaseio.com/",
+		  };
+		  firebase.initializeApp(config);
+		</script>
+	</head>
+	<body>
+            <form>
+                <input type="text" onKeyUp="send2(value)">
+            </form>
+            <script>
+                //firebase
+                var db = firebase.database();
+                var ep = db.ref("/data/");
+
+                function send2(value) {
+		    console.log(value);
+		    var ts = firebase.database.ServerValue.TIMESTAMP;
+		    ep.set({time:ts, value:value});
+		}
+	    </script>
+	</body>
+</html>

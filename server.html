@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js canvas - geometry - cube</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    databaseURL: "https://mptemplate1-92c0b.firebaseio.com/",
+		  };
+		  firebase.initializeApp(config);
+		</script>
+
+	</head>
+	<body>
+            <div id="firebase-data"></div>
+		<script>
+			//firebase
+			var db = firebase.database();
+			var ep=	db.ref("/data/");
+			//firebase receive
+			ep.on("value", function(snapshot) {
+			    document.getElementById("firebase-data").innerHTML = snapshot.val().value;
+			});
+		</script>
+	</body>
+</html>
